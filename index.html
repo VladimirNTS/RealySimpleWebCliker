@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clicker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id='game'>
+        
+    </canvas>
+    
+    <script>
+        let canvas = document.getElementById('game')
+        let ctx = canvas.getContext('2d')
+        
+        let count=0;
+        
+        canvas.height = innerHeight
+        canvas.width = innerWidth
+        
+        let rect = {
+            x: canvas.width/2-40,
+            y: canvas.height/2-40,
+            width: 80,
+            height: 80,
+        }
+        
+        canvas.addEventListener('touchstart', function(event){
+            let x = event.changedTouches[0].pageX
+            let y = event.changedTouches[0].pageY
+            
+            if (x < rect.x + rect.width && x > rect.x){
+                
+                if (y < rect.y + rect.height && y > rect.y){
+                    count += 1
+                    
+                }
+            }
+        })
+        
+        function update() {
+            
+        }
+        
+        function render(){
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            ctx.font = "40px serif";
+            ctx.textAlign = 'center'
+            ctx.fillText(`Нажатий: ${count}`, canvas.width/2, 40, canvas.width)
+            
+            ctx.fillRect(rect.x, rect.y, rect.width, rect.height)
+        }
+        
+        function game_loop() {
+            update();
+            render();
+            window.requestAnimationFrame(game_loop)
+        }
+        game_loop()
+    </script>
+</body>
+</html>
