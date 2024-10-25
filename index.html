@@ -26,7 +26,7 @@
         
         let count=0;
         
-        canvas.height = 500
+        canvas.height = innerHeight
         canvas.width = innerWidth
         
         let rect = {
@@ -54,7 +54,9 @@
         }
         
         function render(){
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            ctx.fillStyle = 'white'
+            ctx.fillRect(0, 0, canvas.width, canvas.height)
+            ctx.fillStyle = 'black'
             ctx.font = "40px serif";
             ctx.textAlign = 'center'
             ctx.fillText(`Нажатий: ${count}`, canvas.width/2, 40, canvas.width)
