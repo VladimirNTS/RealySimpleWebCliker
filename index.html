@@ -16,8 +16,11 @@
     <canvas id='game'>
         
     </canvas>
-    
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
+        var tg = window.Telegram.WebApp;
+        tg.expand();
+        
         let canvas = document.getElementById('game')
         let ctx = canvas.getContext('2d')
         
