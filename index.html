@@ -35,6 +35,13 @@
             width: 80,
             height: 80,
         }
+
+        let rect2 = {
+            x: canvas.width/2-40,
+            y: canvas.height-100,
+            width: 80,
+            height: 80,
+        }
         
         canvas.addEventListener('touchstart', function(event){
             let x = event.changedTouches[0].pageX
@@ -44,6 +51,19 @@
                 
                 if (y < rect.y + rect.height && y > rect.y){
                     count += 1
+                    
+                }
+            }
+        })
+
+        canvas.addEventListener('touchstart', function(event){
+            let x = event.changedTouches[0].pageX
+            let y = event.changedTouches[0].pageY
+            
+            if (x < rect2.x + rect2.width && x > rect2.x){
+                
+                if (y < rect2.y + rect2.height && y > rect2.y){
+                    tg.close()
                     
                 }
             }
@@ -62,6 +82,8 @@
             ctx.fillText(`Нажатий: ${count}`, canvas.width/2, 40, canvas.width)
             
             ctx.fillRect(rect.x, rect.y, rect.width, rect.height)
+            ctx.fillRect(rect2.x, rect2.y, rect2.width, rect2.height)
+         
         }
         
         function game_loop() {
