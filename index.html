@@ -63,6 +63,8 @@
             if (x < rect2.x + rect2.width && x > rect2.x){
                 
                 if (y < rect2.y + rect2.height && y > rect2.y){
+                    let data={user_count: count}
+                    tg.sendData(JSON.stringify(data))
                     tg.close()
                     
                 }
